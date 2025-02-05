@@ -1,7 +1,7 @@
 <template>
 
   <div class="mod-home">
-    <h1>园易EduExch(M) - 管理端</h1>
+    <h1>蛤蜊云网盘 Haliyun Netdisk</h1>
   </div>
 
 </template>

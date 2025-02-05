@@ -70,6 +70,7 @@ const dataForm = ref({
   uuid: '',
   captcha: ''
 })
+
 const dataRule = {
   userName: [
     {
@@ -94,19 +95,11 @@ const dataRule = {
   ]
 }
 
-onBeforeUnmount(() => {
-  document.removeEventListener('keyup', handerKeyup)
-})
+
 onMounted(() => {
   getCaptcha()
-  document.addEventListener('keyup', handerKeyup)
 })
-const handerKeyup = (e) => {
-  const keycode = document.all ? event.keyCode : e.which
-  if (keycode === 13) {
-    this.dataFormSubmit()
-  }
-}
+
 
 const verifyRef = ref(null)
 const dataFormRef = ref(null)
