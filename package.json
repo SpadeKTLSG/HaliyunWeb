@@ -34,9 +34,7 @@
     "unplugin-auto-import": "^0.15.1",
     "unplugin-vue-components": "^0.24.1",
     "vite": "^4.3.9",
-    "vite-plugin-compression": "^0.5.1",
-    "vite-plugin-eslint": "^1.8.1",
-    "vue-eslint-parser": "^9.1.1"
+    "vite-plugin-compression": "^0.5.1"
   },
   "lint-staged": {
     "*.{js,vue}": [
