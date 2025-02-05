@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es5",
+    "sourceMap": true,
+    "skipLibCheck": true
+  },
+  "exclude": [
+    "node_modules"
+  ],
+  "include": [
+    "components.d.ts",
+    "imports.d.ts"
+  ]
+}
