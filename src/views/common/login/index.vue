@@ -50,18 +50,11 @@
         Copyright © 2025 睡眠促进委员会 Sleep Promotion Committee
       </div>
     </div>
-    <Verify
-      ref="verifyRef"
-      :captcha-type="'blockPuzzle'"
-      :img-size="{width:'400px',height:'200px'}"
-      @success="login"
-    />
   </div>
 </template>
 
 <script setup>
 import {encrypt} from '@/utils/crypto'
-import Verify from '@/components/verifition/Verify.vue'
 import cookie from 'vue-cookies'
 
 const dataForm = ref({
@@ -97,13 +90,13 @@ const dataRule = {
 
 
 onMounted(() => {
-  getCaptcha()
 })
 
-
+const router = useRouter()
 const verifyRef = ref(null)
 const dataFormRef = ref(null)
 let isSubmit = false
+
 /**
  * 提交表单
  */
@@ -115,7 +108,7 @@ const dataFormSubmit = () => {
   })
 }
 
-const router = useRouter()
+
 const login = (verifyResult) => {
   if (isSubmit) {
     return
@@ -137,12 +130,6 @@ const login = (verifyResult) => {
   })
 }
 
-/**
- * 获取验证码
- */
-const getCaptcha = () => {
-  dataForm.value.uuid = "123456"
-}
 
 </script>
 
