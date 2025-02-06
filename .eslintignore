@@ -1,0 +1,6 @@
+/build/
+/dist/
+/static/
+components.d.ts
+.eslintrc-auto-import.json
+vite.config.js

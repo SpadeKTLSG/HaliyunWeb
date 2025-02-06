@@ -34,7 +34,6 @@ app.use(router)
 const pinia = createPinia()
 app.use(pinia)
 
-
 // Avue
 app.use(Avue)
 // element-plus
