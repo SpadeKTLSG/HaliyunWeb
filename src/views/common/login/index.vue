@@ -119,6 +119,7 @@ const login = (verifyResult) => {
       userName: dataForm.value.userName,
       passWord: encrypt(dataForm.value.password),
       captchaVerification: verifyResult.captchaVerification
+      // todo 解构函数
     })
   }).then(({data}) => {
     cookie.set('Authorization', data.accessToken)
