@@ -91,9 +91,11 @@ const getDataList = (pageParam, params, done) => {
       }, params))
   })
     .then(({data}) => {
-      dataList.value = data.records
-      page.total = data.total
-      dataListLoading.value = false
+      // 一次性拆包
+      const {records, total, value} = data;
+      dataList.value = records
+      page.total = total
+      dataListLoading.value = value
       if (done) done()
     })
 }
