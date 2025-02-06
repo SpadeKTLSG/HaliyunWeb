@@ -25,10 +25,10 @@
         class="card-content-h"
         style="border-radius: 0 !important; box-shadow: none"
       >
-        <router-view/>
+        <router-view />
       </el-card>
       <div v-else>
-        <router-view/>
+        <router-view />
       </div>
     </main>
   </div>

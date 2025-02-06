@@ -15,7 +15,7 @@
         label="公告标题"
         prop="title"
       >
-        <el-input v-model="dataForm.title"/>
+        <el-input v-model="dataForm.title" />
       </el-form-item>
 
       <el-form-item

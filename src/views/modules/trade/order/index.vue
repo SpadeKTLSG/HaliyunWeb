@@ -228,26 +228,26 @@ const options = [{
   value: 1,
   label: '待付款'
 },
-  {
-    value: 2,
-    label: '待发货'
-  },
-  {
-    value: 3,
-    label: '待收货'
-  },
-  {
-    value: 4,
-    label: '待评价'
-  },
-  {
-    value: 5,
-    label: '成功'
-  },
-  {
-    value: 6,
-    label: '失败'
-  }]
+{
+  value: 2,
+  label: '待发货'
+},
+{
+  value: 3,
+  label: '待收货'
+},
+{
+  value: 4,
+  label: '待评价'
+},
+{
+  value: 5,
+  label: '成功'
+},
+{
+  value: 6,
+  label: '失败'
+}]
 
 
 const dataList = ref([])

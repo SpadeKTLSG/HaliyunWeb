@@ -139,7 +139,7 @@ const onDelete = (id) => {
           })
         })
     }).catch(() => {
-  })
+    })
 }
 
 /**

@@ -6,13 +6,13 @@
     class="site-wrapper"
   >
     <template v-if="!loading">
-      <MainNavbar/>
-      <MainSidebar/>
+      <MainNavbar />
+      <MainSidebar />
       <div
         :style="{ 'min-height': documentClientHeight + 'px' }"
         class="site-content__wrapper"
       >
-        <main-content/>
+        <main-content />
       </div>
     </template>
   </div>
