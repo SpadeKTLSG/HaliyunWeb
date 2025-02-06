@@ -31,7 +31,6 @@
       <template #status="scope">
         <el-tag
           v-if="scope.row.status === 0"
-
         >
           未启用
         </el-tag>

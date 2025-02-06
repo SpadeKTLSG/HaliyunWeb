@@ -9,7 +9,6 @@
       @selection-change="selectionChange"
       @on-load="getDataList"
     >
-
       <template #status="scope">
         <el-tag v-if="scope.row.status === 0">
           封禁中
@@ -55,7 +54,6 @@ const page = reactive({
  * !分页查询
  */
 const getDataList = (pageParam, params, done) => {
-
   http({
     url: http.adornUrl('/admin/user/page'),
     method: 'get',

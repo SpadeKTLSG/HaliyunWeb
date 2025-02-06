@@ -1,5 +1,4 @@
 <template>
-
   <div class="mod-category">
     <el-form
       :inline="true"
@@ -50,7 +49,6 @@
         <template #default="scope">
           <el-tag
             v-if="scope.row.status === 0"
-
           >
             下线
           </el-tag>

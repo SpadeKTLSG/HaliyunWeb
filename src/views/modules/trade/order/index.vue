@@ -39,7 +39,6 @@
 
 
       <el-form-item>
-
         <el-button
           icon="el-icon-search"
           type="primary"
@@ -146,23 +145,18 @@
                 <div class="item">
                   <span
                     v-if="order.status === 1"
-
                   >待付款</span>
                   <span
                     v-else-if="order.status === 2"
-
                   >待发货</span>
                   <span
                     v-else-if="order.status === 3"
-
                   >待收货</span>
                   <span
                     v-else-if="order.status === 4"
-
                   >待评价</span>
                   <span
                     v-else-if="order.status === 5"
-
                   >成功</span>
                   <span
                     v-else
@@ -196,7 +190,12 @@
     </div>
 
 
-    <div v-if="!dataList.length" class="empty-tips"> 暂无数据</div>
+    <div
+      v-if="!dataList.length"
+      class="empty-tips"
+    >
+      暂无数据
+    </div>
 
     <el-pagination
       :current-page="page.pageIndex"

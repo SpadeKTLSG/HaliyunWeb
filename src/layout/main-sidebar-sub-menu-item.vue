@@ -46,8 +46,8 @@
         @click="gotoRouteHandle(expandMenu)"
       >
         <span :title="expandMenu.name.length > 4 ? expandMenu.name : ''">{{
-            expandMenu.name
-          }}</span>
+          expandMenu.name
+        }}</span>
       </el-menu-item>
     </div>
   </div>

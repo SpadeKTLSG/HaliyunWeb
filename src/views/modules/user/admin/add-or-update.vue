@@ -54,8 +54,6 @@
           placeholder="邮箱"
         />
       </el-form-item>
-
-
     </el-form>
     <template #footer>
       <span class="dialog-footer">
@@ -66,7 +64,6 @@
         >确定</el-button>
       </span>
     </template>
-
   </el-dialog>
 </template>
 

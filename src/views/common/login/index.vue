@@ -1,8 +1,6 @@
 <template>
   <div class="login">
-
     <div class="login-box">
-
       <div class="top">
         <div class="logo">
           <img

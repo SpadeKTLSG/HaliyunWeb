@@ -70,7 +70,6 @@
                   style="font-size: 14px"
                 >{{ menu.name }}</span>
               </div>
-
             </li>
           </template>
         </ul>

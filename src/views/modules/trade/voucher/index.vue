@@ -10,7 +10,6 @@
       @on-load="getDataList"
       @refresh-change="refreshChange"
     >
-
       <template #isTop="scope">
         <el-tag v-if="scope.row.isTop === 0">
           否

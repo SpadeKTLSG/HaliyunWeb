@@ -1,5 +1,4 @@
 <template>
-
   <el-dialog
     v-model="visible"
     :close-on-click-modal="false"
@@ -14,7 +13,6 @@
     >
       <div class="main">
         <div class="content">
-
           <!--流程图-->
           <div class="order-number">
             <div class="num-cont">
@@ -52,7 +50,6 @@
 
           <div class="order-state">
             <div class="state-cont">
-
               <!--订单状态-->
               <div class="state-title">
                 <el-form-item label="订单状态:">
@@ -89,7 +86,6 @@
                     </el-tag>
                     <el-tag
                       v-if="dataForm.status === 6"
-
                     >
                       失败
                     </el-tag>
@@ -289,7 +285,6 @@
         </div>
       </div>
     </el-form>
-
   </el-dialog>
 </template>
 
