@@ -54,6 +54,7 @@
 <script setup>
 import {encrypt} from '@/utils/crypto'
 import cookie from 'vue-cookies'
+import {ElMessage} from "element-plus";
 
 const dataForm = ref({
   userName: '',
@@ -122,6 +123,11 @@ const login = (verifyResult) => {
       // todo 解构函数
     })
   }).then(({data}) => {
+    ElMessage({
+      message: "登录成功",
+      type: 'success',
+      duration: 1000
+    });
     cookie.set('Authorization', data.accessToken)
     router.replace({name: 'home'})
   }).catch(() => {
