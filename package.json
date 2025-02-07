@@ -1,8 +1,8 @@
 {
   "name": "haliyun",
-  "private": true,
-  "version": "1.0.0",
+  "version": "3.0.0",
   "type": "module",
+  "description": "HaliyunNetdisk 蛤蜊云网盘",
   "scripts": {
     "dev": "vite --open",
     "build": "vite build",
@@ -48,5 +48,18 @@
     "*.{js,vue}": [
       "eslint --fix"
     ]
-  }
+  },
+  "browserslist": [
+    "defaults",
+    "not ie <= 11",
+    "chrome >= 49",
+    "firefox >= 51",
+    "edge > 1",
+    "android > 1"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SpadeKTLSG/HaliyunWeb.git"
+  },
+  "license": "MIT"
 }
