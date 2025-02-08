@@ -39,7 +39,7 @@ export default defineConfig(() => {
     // 服务配置
     server: {
       host: true,
-      port: 10000,
+      port: 9876,
       open: true
     },
     // 解析配置

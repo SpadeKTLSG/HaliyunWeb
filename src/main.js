@@ -21,22 +21,20 @@ moment.locale('zh-cn', {
     LL: 'YYYY-MM-DD HH:mm:ss'
   },
   week: {
-    // GB/T 7408-1994《数据元和交换格式·信息交换·日期和时间表示法》与ISO 8601:1988等效
     dow: 1, // 星期一， 是一个星期的第一天
     doy: 4 // 1月4日所在的的一周是一年的第一周
   }
 })
 const app = createApp(App)
 
-// router
-app.use(router)
+app.use(router) // router
 // pinia
 const pinia = createPinia()
 app.use(pinia)
-
 // Avue
 app.use(Avue)
 // element-plus
+
 app.use(ElementPlus, {locale})
 for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
   app.component(key, component)
