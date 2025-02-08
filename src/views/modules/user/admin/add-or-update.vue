@@ -70,7 +70,7 @@
 <script setup>
 import {ElMessage} from 'element-plus'
 import {Debounce} from '@/utils/debounce'
-import {encrypt} from '@/utils/crypto'
+import {encrypt} from '@/utils/encryptUtil/crypto.js'
 
 const emit = defineEmits(['refreshDataList'])
 

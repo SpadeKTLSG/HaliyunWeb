@@ -38,8 +38,6 @@ module.exports = {
     'no-inner-declarations': 'warn',
     // 禁止由于 await 或 yield的使用而可能导致出现竞态条件的赋值
     'require-atomic-updates': 'warn',
-    // console 警告
-    'no-console': 'warn',
     // 禁止出现未使用过的变量
     'no-unused-vars': [
       'warn',
@@ -92,7 +90,12 @@ module.exports = {
     'space-before-function-paren': 'off',
     // 禁用 no-multiple-empty-lines 规则
     'no-multiple-empty-lines': 'off',
-    'no-trailing-spaces': 'off'
+    // 没有分号警告
+    'no-trailing-spaces': 'off',
+    // 空行警告
+    'padded-blocks': 'off',
+    // 控制台警告
+    'no-console': 'off'
   },
 
   // 忽略文件

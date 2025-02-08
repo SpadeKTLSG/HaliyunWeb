@@ -113,7 +113,7 @@ const login = () => {
     method: 'post',
     data: http.adornData({
       account: dataForm.value.account,
-      // passWord: encrypt(dataForm.value.password),
+      // passWord: encrypt(dataForm.value.password), todo 联调实现加密落库
       passWord: dataForm.value.password,
       code: dataForm.value.code,
       // 临时:
