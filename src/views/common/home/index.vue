@@ -4,8 +4,6 @@
   </div>
 </template>
 
-<style lang="scss" scoped>
-.mod-home {
-  line-height: 1.5;
-}
-</style>
+<script setup>
+import './index.scss'
+</script>

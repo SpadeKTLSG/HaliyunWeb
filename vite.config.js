@@ -24,9 +24,9 @@ export default defineConfig(() => {
       }),
       // 自动引入组件
       Components({
-        dirs: ['src/components'],
+        dirs: ['src/compo/**'],
         resolvers: [ElementPlusResolver()],
-        dts: 'components.d.ts'
+        dts: 'compo.d.ts'
       }),
       // eslint
       eslintPlugin({
@@ -45,7 +45,7 @@ export default defineConfig(() => {
     // 解析配置
     resolve: {
       alias: {
-        '@': path.resolve(__dirname, 'src'), 'vue-i18n': 'vue-i18n/dist/vue-i18n.cjs.js'
+        '@': path.resolve(__dirname, 'src'), // 设置 @ 指向 src
       }
     },
     // 构建配置

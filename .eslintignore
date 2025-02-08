@@ -4,3 +4,4 @@
 components.d.ts
 .eslintrc-auto-import.json
 vite.config.js
+!/imports.d.ts
