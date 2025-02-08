@@ -11,7 +11,7 @@ import Avue from '@smallwei/avue'
 import '@smallwei/avue/lib/index.css'
 
 // 全局样式
-import '@/styles/index.scss'
+import '@/layout/style/index.scss'
 
 moment.locale('zh-cn', {
   longDateFormat: {

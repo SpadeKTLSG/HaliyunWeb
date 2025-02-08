@@ -1,21 +1,11 @@
 import {defineStore} from 'pinia'
 import router from '@/router/index.js'
 
-// 文件分类
-export const fileTypeMap = {
-  image: ['gif', 'jpg', 'jpeg', 'png', 'bmp', 'webp', 'ico'],
-  video: ['mp4', 'webm', 'm3u8', 'rmvb', 'avi', 'swf', '3gp', 'mkv', 'flv'],
-  audio: ['mp3', 'wav', 'wma', 'ogg', 'aac', 'flac', 'm4a'],
-  text: ['scss', 'sass', 'kt', 'gitignore', 'bat', 'properties', 'yml', 'css', 'js', 'md', 'xml', 'txt', 'py', 'go', 'html', 'less', 'php', 'rb', 'rust', 'script', 'java', 'sh', 'sql'],
-  executable: ['exe', 'dll', 'com', 'vbs'],
-  archive: ['7z', 'zip', 'rar', 'tar', 'gz'],
-  pdf: ['pdf'],
-  office: ['doc', 'docx', 'csv', 'xls', 'xlsx', "ppt", 'pptx'],
-  three3d: ['dae', 'fbx', 'gltf', 'glb', 'obj', 'ply', 'stl'],
-  document: ['txt', 'pages', 'epub', 'numbers', 'keynote']
-};
 
-
+/**
+ * 页面操作公共store
+ * @type {StoreDefinition<"common", {menuList: [], sidebarFold: boolean, selectMenu: [], sidebarLayoutSkin: string, selectLeftId: string, selectRightId: string, mainTabs: [], documentClientHeight: number, mainTabsActiveName: string, menuIds: [], routeList: [], menuActiveName: string}, {}, {updateSelectMenu(*): void, replaceSelectMenu(*): void, removeMainActiveTab(): void, updateMenuIds(*): void, updateRouteList(*): void, updateDocumentClientHeight(*): void, updateMenuActiveName(*): void, updateSelectLeftId(*): void, updateSidebarFold(*): void, updateMenuList(*): void, updateMainTabs(*): void, updateMainTabsActiveName(*): void, updateSelectRightId(*): void}>}
+ */
 export const useCommonStore = defineStore('common', {
   state: () => {
     return {
