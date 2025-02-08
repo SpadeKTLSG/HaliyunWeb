@@ -9,9 +9,9 @@
           :rules="dataRule"
           status-icon
         >
-          <el-form-item prop="userName">
+          <el-form-item prop="account">
             <el-input
-              v-model="dataForm.userName"
+              v-model="dataForm.account"
               class="info"
               placeholder="请输入帐号"
             />
@@ -24,7 +24,7 @@
               type="password"
             />
           </el-form-item>
-          <el-form-item prop="userName">
+          <el-form-item prop="account">
             <el-input
               v-model="dataForm.code"
               class="info"
@@ -32,13 +32,13 @@
             />
           </el-form-item>
           <el-form-item>
-            <div class="item-btn">
-              <input
-                type="button"
-                value="点我登录"
-                @click="`login`"
-              >
-            </div>
+            <el-button
+              type="primary"
+              class="login-btn"
+              @click="login"
+            >
+              登录
+            </el-button>
           </el-form-item>
         </el-form>
       </div>
@@ -51,7 +51,6 @@
 
 <script setup>
 import './index.scss'
-import {encrypt} from '@/utils/crypto'
 import cookie from 'vue-cookies'
 import {ElMessage} from "element-plus";
 
@@ -67,7 +66,7 @@ const dataFormRef = ref(null)
  * 表单数据
  */
 const dataForm = ref({
-  userName: '',
+  account: '',
   password: '',
   code: ''
 })
@@ -76,7 +75,7 @@ const dataForm = ref({
  * 表单验证规则
  */
 const dataRule = {
-  userName: [
+  account: [
     {
       required: true,
       message: '帐号不能为空',
@@ -110,12 +109,17 @@ const login = () => {
   }
   isSubmit = true
   http({
-    url: http.adornUrl('/adminLogin'),
-    method: 'get',
+    url: http.adornUrl('/Guest/users/login'),
+    method: 'post',
     data: http.adornData({
-      userName: dataForm.value.userName,
-      passWord: encrypt(dataForm.value.password),
-      code: dataForm.value.code
+      account: dataForm.value.account,
+      // passWord: encrypt(dataForm.value.password),
+      passWord: dataForm.value.password,
+      code: dataForm.value.code,
+      // 临时:
+      admin: 0,
+      loginType: 3,
+      phone: "15985785169"
     })
   }).then(({data}) => {
     ElMessage({

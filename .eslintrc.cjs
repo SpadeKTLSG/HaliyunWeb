@@ -91,8 +91,8 @@ module.exports = {
     // 禁用 space-before-function-paren 规则
     'space-before-function-paren': 'off',
     // 禁用 no-multiple-empty-lines 规则
-    'no-multiple-empty-lines': 'off'
-
+    'no-multiple-empty-lines': 'off',
+    'no-trailing-spaces': 'off'
   },
 
   // 忽略文件

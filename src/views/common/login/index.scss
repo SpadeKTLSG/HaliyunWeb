@@ -43,6 +43,13 @@
           background: #1f87e8;
           color: #fff;
           border-radius: 3px;
+
+
+          .login-button {
+            cursor: pointer;
+            transition: filter 0.3s ease;
+          }
+          
         }
       }
     }

@@ -32,7 +32,7 @@ http.interceptors.request.use(
     return Promise.reject(error)
   }
 )
-
+const res = {}
 /**
  * 响应拦截
  */
@@ -42,11 +42,15 @@ http.interceptors.response.use(
     if (response.request.responseType === 'blob') {
       return response
     }
+
+    // 获得响应数据
     const res = response.data
-    // 00000 请求成功
-    if (res.code === '00000' || res.code === 'A00002') {
+
+    // 0 请求成功
+    if (res.code === '0') {
       return res
     }
+
     // A00001 用于直接显示提示用户的错误,内容由输入决定
     if (res.code === 'A00001') {
       ElMessage({
@@ -56,6 +60,7 @@ http.interceptors.response.use(
       })
       return Promise.reject(res)
     }
+
     // A00004 未授权
     if (res.code === 'A00004') {
       clearLoginInfo()
