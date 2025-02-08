@@ -1,6 +1,6 @@
 import {createRouter, createWebHistory} from 'vue-router'
 import cookie from 'vue-cookies'
-import {clearLoginInfo} from '@/utils'
+import {clearLoginInfo} from '@/layout/index.js'
 import Layout from '@/layout/main.vue'
 import Login from '@/views/common/login/index.vue'
 import {useCommonStore} from "@/layout/common.js";

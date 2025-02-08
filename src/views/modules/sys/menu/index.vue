@@ -129,7 +129,7 @@
 </template>
 
 <script setup>
-import {treeDataTranslate} from '@/utils'
+import {treeDataTranslate} from '@/layout/index.js'
 import {ElMessage, ElMessageBox} from 'element-plus'
 import AddOrUpdate from './add-or-update.vue'
 

@@ -100,8 +100,8 @@ module.exports = {
     'build/',
     'dist/',
     'static/',
-    'components.d.ts',
+    'compo.d.ts',
     '.eslintrc-auto-import.json',
-    'vite.config.js'
+    'vite.config.js',
   ]
 }

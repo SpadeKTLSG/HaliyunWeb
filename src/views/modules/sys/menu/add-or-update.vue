@@ -145,7 +145,7 @@
 </template>
 
 <script setup>
-import {idList, treeDataTranslate} from '@/utils'
+import {idList, treeDataTranslate} from '@/layout/index.js'
 import {ElMessage} from 'element-plus'
 
 const emit = defineEmits(['refreshDataList'])

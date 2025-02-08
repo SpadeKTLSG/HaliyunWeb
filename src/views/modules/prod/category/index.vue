@@ -95,7 +95,7 @@
 </template>
 
 <script setup>
-import {checkFileUrl, treeDataTranslate} from '@/utils'
+import {checkFileUrl, treeDataTranslate} from '@/layout/index.js'
 import {ElMessage, ElMessageBox} from 'element-plus'
 import AddOrUpdate from './add-or-update.vue'
 

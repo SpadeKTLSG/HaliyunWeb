@@ -85,7 +85,7 @@
 
 <script setup>
 import {ElMessage} from 'element-plus'
-import {idList, treeDataTranslate} from '@/utils'
+import {idList, treeDataTranslate} from '@/layout/index.js'
 import {Debounce} from '@/utils/http.js'
 
 const emit = defineEmits(['refreshDataList'])

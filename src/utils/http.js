@@ -3,7 +3,7 @@ import qs from 'qs'
 import cookie from 'vue-cookies'
 import router from '@/router'
 import merge from 'lodash/merge'
-import {clearLoginInfo} from '@/utils'
+import {clearLoginInfo} from '@/layout/index.js'
 import {ElMessage} from 'element-plus'
 
 const http = axios.create({

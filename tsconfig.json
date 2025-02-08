@@ -9,7 +9,7 @@
     "node_modules"
   ],
   "include": [
-    "components.d.ts",
+    "compo.d.ts",
     "imports.d.ts"
   ]
 }
