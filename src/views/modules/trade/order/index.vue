@@ -258,7 +258,9 @@ const page = reactive({
 })
 
 onMounted(() => {
-  getDataList(page)
+  nextTick(() => {
+    getDataList(page)
+  });
 })
 
 
