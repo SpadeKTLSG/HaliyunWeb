@@ -61,7 +61,7 @@
 
 <script setup>
 import {ElMessage} from 'element-plus'
-import {Debounce} from '@/utils/http.js'
+import {Debounce} from '@/utils/webUtil/http.js'
 
 const emit = defineEmits(['refreshDataList'])
 const visible = ref(false)

@@ -1,7 +1,7 @@
 import axios from 'axios'
 import qs from 'qs'
 import cookie from 'vue-cookies'
-import router from '@/router'
+import router from '@/router/index.js'
 import merge from 'lodash/merge'
 import {clearLoginInfo} from '@/layout/index.js'
 import {ElMessage} from 'element-plus'
@@ -129,22 +129,6 @@ http.adornUrl = actionName => {
 }
 
 /**
- * im请求地址处理
- * @param {*} actionName action方法名称
- */
-http.adornImUrl = actionName => {
-  return import.meta.env.VITE_APP_IM_API + actionName
-}
-
-/**
- * im ws 请求地址处理
- * @param {*} actionName action方法名称
- */
-http.adornWsImUrl = actionName => {
-  return import.meta.env.VITE_APP_WS_IM_API + actionName
-}
-
-/**
  * get请求参数处理
  * @param {*} params 参数对象
  * @param {*} openDefultParams 是否开启默认参数?
@@ -172,7 +156,10 @@ http.adornData = (data = {}, openDefultdata = true, contentType = 'json') => {
   return contentType === 'json' ? JSON.stringify(data) : qs.stringify(data)
 }
 
-const uploadFile = function (url, file) {
+/**
+ * 上传文件
+ */
+export const uploadFile = function (url, file) {
   const config = {
     // 添加请求头
     headers: {
@@ -210,4 +197,3 @@ export const Debounce = (fn, t) => {
 
 
 export default http
-export {uploadFile}

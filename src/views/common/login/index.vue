@@ -1,44 +1,42 @@
 <template>
   <div class="login">
     <div class="login-box">
-      <div class="top">
-        <div class="logo">
-          <img
-            alt=""
-            src="~@/assets/img/login-logo.png"
-          >
-        </div>
-      </div>
-
       <div class="mid">
+        <!--登录表单-->
         <el-form
           ref="dataFormRef"
           :model="dataForm"
           :rules="dataRule"
           status-icon
-          @keyup.enter="dataFormSubmit()"
         >
           <el-form-item prop="userName">
             <el-input
               v-model="dataForm.userName"
               class="info"
-              placeholder="帐号"
+              placeholder="请输入帐号"
             />
           </el-form-item>
           <el-form-item prop="password">
             <el-input
               v-model="dataForm.password"
               class="info"
-              placeholder="密码"
+              placeholder="请输入密码"
               type="password"
+            />
+          </el-form-item>
+          <el-form-item prop="userName">
+            <el-input
+              v-model="dataForm.code"
+              class="info"
+              placeholder="请输入验证码"
             />
           </el-form-item>
           <el-form-item>
             <div class="item-btn">
               <input
                 type="button"
-                value="登录"
-                @click="dataFormSubmit()"
+                value="点我登录"
+                @click="`login`"
               >
             </div>
           </el-form-item>
@@ -57,13 +55,26 @@ import {encrypt} from '@/utils/crypto'
 import cookie from 'vue-cookies'
 import {ElMessage} from "element-plus";
 
+const router = useRouter()
+let isSubmit = false
+
+/**
+ * 表单引用
+ */
+const dataFormRef = ref(null)
+
+/**
+ * 表单数据
+ */
 const dataForm = ref({
   userName: '',
   password: '',
-  uuid: '',
-  captcha: ''
+  code: ''
 })
 
+/**
+ * 表单验证规则
+ */
 const dataRule = {
   userName: [
     {
@@ -79,7 +90,7 @@ const dataRule = {
       trigger: 'blur'
     }
   ],
-  captcha: [
+  code: [
     {
       required: true,
       message: '验证码不能为空',
@@ -92,36 +103,19 @@ const dataRule = {
 onMounted(() => {
 })
 
-const router = useRouter()
-const verifyRef = ref(null)
-const dataFormRef = ref(null)
-let isSubmit = false
 
-/**
- * 提交表单
- */
-const dataFormSubmit = () => {
-  dataFormRef.value?.validate((valid) => {
-    if (valid) {
-      verifyRef.value?.show()
-    }
-  })
-}
-
-
-const login = (verifyResult) => {
+const login = () => {
   if (isSubmit) {
     return
   }
   isSubmit = true
   http({
     url: http.adornUrl('/adminLogin'),
-    method: 'post',
+    method: 'get',
     data: http.adornData({
       userName: dataForm.value.userName,
       passWord: encrypt(dataForm.value.password),
-      captchaVerification: verifyResult.captchaVerification
-      // todo 解构函数
+      code: dataForm.value.code
     })
   }).then(({data}) => {
     ElMessage({
@@ -133,6 +127,11 @@ const login = (verifyResult) => {
     router.replace({name: 'home'})
   }).catch(() => {
     isSubmit = false
+    ElMessage({
+      message: "登录失败",
+      type: 'error',
+      duration: 1000
+    });
   })
 }
 
