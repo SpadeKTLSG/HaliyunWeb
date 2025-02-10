@@ -51,7 +51,6 @@
           删除
         </el-button>
       </template>
-
     </avue-crud>
 
     <!-- 弹窗, 新增 / 修改 -->
@@ -60,7 +59,6 @@
       ref="addOrUpdateRef"
       @refresh-data-list="getDataList"
     />
-
   </div>
 </template>
 

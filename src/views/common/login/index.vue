@@ -1,52 +1,48 @@
 <template>
   <div class="login">
-
     <div class="login-box">
-
-      <div class="top">
-        <div class="logo">
-          <img
-            alt=""
-            src="~@/assets/img/login-logo.png"
-          >
-        </div>
-      </div>
-
       <div class="mid">
+        <!--登录表单-->
         <el-form
           ref="dataFormRef"
           :model="dataForm"
           :rules="dataRule"
           status-icon
-          @keyup.enter="dataFormSubmit()"
         >
-          <el-form-item prop="userName">
+          <el-form-item prop="account">
             <el-input
-              v-model="dataForm.userName"
+              v-model="dataForm.account"
               class="info"
-              placeholder="帐号"
+              placeholder="请输入帐号"
             />
           </el-form-item>
           <el-form-item prop="password">
             <el-input
               v-model="dataForm.password"
               class="info"
-              placeholder="密码"
+              placeholder="请输入密码"
               type="password"
             />
           </el-form-item>
+          <el-form-item prop="account">
+            <el-input
+              v-model="dataForm.code"
+              class="info"
+              placeholder="请输入验证码"
+            />
+          </el-form-item>
           <el-form-item>
-            <div class="item-btn">
-              <input
-                type="button"
-                value="登录"
-                @click="dataFormSubmit()"
-              >
-            </div>
+            <el-button
+              type="primary"
+              class="login-btn"
+              @click="login"
+            >
+              登录
+            </el-button>
           </el-form-item>
         </el-form>
       </div>
-      <div class="bottom">
+      <div class="bottom-sign">
         Copyright © 2025 睡眠促进委员会 Sleep Promotion Committee
       </div>
     </div>
@@ -54,18 +50,32 @@
 </template>
 
 <script setup>
-import {encrypt} from '@/utils/crypto'
+import './index.scss'
 import cookie from 'vue-cookies'
+import {ElMessage} from "element-plus";
 
+const router = useRouter()
+let isSubmit = false
+
+/**
+ * 表单引用
+ */
+const dataFormRef = ref(null)
+
+/**
+ * 表单数据
+ */
 const dataForm = ref({
-  userName: '',
+  account: '',
   password: '',
-  uuid: '',
-  captcha: ''
+  code: ''
 })
 
+/**
+ * 表单验证规则
+ */
 const dataRule = {
-  userName: [
+  account: [
     {
       required: true,
       message: '帐号不能为空',
@@ -79,7 +89,7 @@ const dataRule = {
       trigger: 'blur'
     }
   ],
-  captcha: [
+  code: [
     {
       required: true,
       message: '验证码不能为空',
@@ -92,112 +102,43 @@ const dataRule = {
 onMounted(() => {
 })
 
-const router = useRouter()
-const verifyRef = ref(null)
-const dataFormRef = ref(null)
-let isSubmit = false
 
-/**
- * 提交表单
- */
-const dataFormSubmit = () => {
-  dataFormRef.value?.validate((valid) => {
-    if (valid) {
-      verifyRef.value?.show()
-    }
-  })
-}
-
-
-const login = (verifyResult) => {
+const login = () => {
   if (isSubmit) {
     return
   }
   isSubmit = true
   http({
-    url: http.adornUrl('/adminLogin'),
+    url: http.adornUrl('/Guest/users/login'),
     method: 'post',
     data: http.adornData({
-      userName: dataForm.value.userName,
-      passWord: encrypt(dataForm.value.password),
-      captchaVerification: verifyResult.captchaVerification
+      account: dataForm.value.account,
+      // passWord: encrypt(dataForm.value.password), todo 联调实现加密落库
+      passWord: dataForm.value.password,
+      code: dataForm.value.code,
+      // 临时:
+      admin: 0,
+      loginType: 3,
+      phone: "15985785169"
     })
   }).then(({data}) => {
+    ElMessage({
+      message: "登录成功",
+      type: 'success',
+      duration: 1000
+    });
     cookie.set('Authorization', data.accessToken)
     router.replace({name: 'home'})
   }).catch(() => {
     isSubmit = false
+    ElMessage({
+      message: "登录失败",
+      type: 'error',
+      duration: 1000
+    });
   })
 }
 
 
 </script>
 
-<style lang="scss" scoped>
-.login {
-  width: 100%;
-  height: 100%;
-  background: url('../../../static/login-bg.png') no-repeat;
-  background-size: cover;
-  position: fixed;
-
-  .login-box {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    height: 100%;
-    padding-top: 10%;
-
-    .top {
-      margin-bottom: 30px;
-      text-align: center;
-
-      .logo {
-        font-size: 0;
-        max-width: 50%;
-        margin: 0 auto;
-      }
-
-      &:deep(.company) {
-        font-size: 16px;
-        margin-top: 10px;
-      }
-    }
-
-    .mid {
-      font-size: 14px;
-
-      .item-btn {
-        width: 410px;
-        margin-top: 20px;
-
-        input {
-          border: 0;
-          width: 100%;
-          height: 40px;
-          background: #1f87e8;
-          color: #fff;
-          border-radius: 3px;
-        }
-      }
-    }
-
-    .bottom {
-      position: absolute;
-      bottom: 10%;
-      width: 100%;
-      color: #999;
-      font-size: 12px;
-      text-align: center;
-    }
-  }
-}
-
-.info {
-  width: 410px;
-}
-
-:deep(.login-captcha) {
-  height: 40px;
-}
-</style>

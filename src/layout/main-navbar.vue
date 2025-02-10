@@ -1,7 +1,6 @@
 <template>
   <div>
     <nav class="site-navbar">
-
       <!--左侧-->
       <div
         :style="{ 'margin-right': sidebarFold ? 0 : '20px' }"
@@ -28,7 +27,6 @@
           <svg-icon
             class="left-item"
             icon-class="icon-zhedie"
-
           />
         </div>
 
@@ -49,7 +47,6 @@
           </el-dropdown>
         </div>
       </div>
-
     </nav>
   </div>
 </template>

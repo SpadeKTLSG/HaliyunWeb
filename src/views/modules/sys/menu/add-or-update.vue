@@ -124,7 +124,7 @@
               <template #content>
                 <div>全站推荐使用SVG Sprite, 详细请参考:icons/index.js 描述</div>
               </template>
-              <i class="el-icon-warning"/>
+              <i class="el-icon-warning" />
             </el-tooltip>
           </el-col>
         </el-row>
@@ -145,7 +145,7 @@
 </template>
 
 <script setup>
-import {idList, treeDataTranslate} from '@/utils'
+import {idList, treeDataTranslate} from '@/layout/index.js'
 import {ElMessage} from 'element-plus'
 
 const emit = defineEmits(['refreshDataList'])

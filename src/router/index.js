@@ -1,6 +1,6 @@
 import {createRouter, createWebHistory} from 'vue-router'
 import cookie from 'vue-cookies'
-import {clearLoginInfo} from '@/utils'
+import {clearLoginInfo} from '@/layout/index.js'
 import Layout from '@/layout/main.vue'
 import Login from '@/views/common/login/index.vue'
 import {useCommonStore} from "@/layout/common.js";
@@ -144,8 +144,7 @@ router.beforeEach((to, from, next) => {
         replace: true
       })
     }).catch(e => {
-      // eslint-disable-next-line no-console
-      console.log(`%c${e} 请求菜单列表和权限失败，跳转至登录页！！`, 'color:blue')
+      console.log(`%c${e} 请求菜单列表和权限失败，跳转至登录页...`, 'color:blue')
       router.push({name: 'login'})
     })
   }
@@ -195,6 +194,7 @@ function fnAddDynamicMenuRoutes(menuList = [], routes = []) {
       }
 
       try {
+        // 会把传递的后端URL数据转换为前端模块的文件路径进行绑定
         route.component = modules[`../views/modules/${menuList[i].url}/index.vue`] || null
       } catch (e) {
       }

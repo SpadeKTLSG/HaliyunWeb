@@ -1,8 +1,8 @@
 {
   "name": "haliyun",
-  "private": true,
-  "version": "1.0.0",
+  "version": "3.0.0",
   "type": "module",
+  "description": "HaliyunNetdisk 蛤蜊云网盘",
   "scripts": {
     "dev": "vite --open",
     "build": "vite build",
@@ -21,7 +21,6 @@
     "moment": "2.29.4",
     "pinia": "2.0.33",
     "qs": "^6.13.0",
-    "vite-plugin-svg-icons": "^2.0.1",
     "vue": "3.2.47",
     "vue-cookies": "1.8.3",
     "vue-router": "4.1.6"
@@ -31,14 +30,37 @@
     "@vitejs/plugin-vue": "^4.1.0",
     "lint-staged": "13.2.2",
     "sass": "^1.83.4",
+    "crypto-js": "^4.1.1",
     "unplugin-auto-import": "^0.15.1",
     "unplugin-vue-components": "^0.24.1",
     "vite": "^4.3.9",
-    "vite-plugin-compression": "^0.5.1"
+    "vite-plugin-compression": "^0.5.1",
+    "vite-plugin-eslint": "^1.8.1",
+    "eslint": "^8.38.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-n": "^15.7.0",
+    "eslint-plugin-promise": "^6.1.1",
+    "eslint-plugin-vue": "^9.10.0",
+    "eslint-plugin-vue-scoped-css": "^2.4.0",
+    "vue-eslint-parser": "^9.1.1"
   },
   "lint-staged": {
     "*.{js,vue}": [
       "eslint --fix"
     ]
-  }
+  },
+  "browserslist": [
+    "defaults",
+    "not ie <= 11",
+    "chrome >= 49",
+    "firefox >= 51",
+    "edge > 1",
+    "android > 1"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SpadeKTLSG/HaliyunWeb.git"
+  },
+  "license": "MIT"
 }

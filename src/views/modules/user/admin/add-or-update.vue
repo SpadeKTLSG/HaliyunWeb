@@ -54,8 +54,6 @@
           placeholder="邮箱"
         />
       </el-form-item>
-
-
     </el-form>
     <template #footer>
       <span class="dialog-footer">
@@ -66,14 +64,13 @@
         >确定</el-button>
       </span>
     </template>
-
   </el-dialog>
 </template>
 
 <script setup>
 import {ElMessage} from 'element-plus'
 import {Debounce} from '@/utils/debounce'
-import {encrypt} from '@/utils/crypto'
+import {encrypt} from '@/utils/encryptUtil/crypto.js'
 
 const emit = defineEmits(['refreshDataList'])
 
