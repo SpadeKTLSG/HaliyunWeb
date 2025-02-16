@@ -29,6 +29,7 @@ const http = axios.create({
 http.interceptors.request.use(
   config => {
     config.headers.Authorization = cookie.get('Authorization') // 请求头带上token
+    config.headers.account = cookie.get('account') // 请求头带上account
     return config
   },
   error => {

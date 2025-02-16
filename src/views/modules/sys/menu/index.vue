@@ -31,11 +31,7 @@
         header-align="center"
         label="图标"
       >
-        <template #default="scope">
-          <svg-icon
-            :icon-class="`icon-${scope.row.icon}`"
-          />
-        </template>
+        <template #default="scope" />
       </el-table-column>
       <el-table-column
         align="center"

@@ -117,9 +117,9 @@ const login = () => {
       passWord: dataForm.value.password,
       code: dataForm.value.code,
       // 临时:
-      admin: 0,
+      admin: 1,
       loginType: 3,
-      phone: "15985785169"
+      phone: "15911451419"
     })
   }).then(({data}) => {
     ElMessage({
@@ -127,7 +127,8 @@ const login = () => {
       type: 'success',
       duration: 1000
     });
-    cookie.set('Authorization', data.accessToken)
+    cookie.set('Authorization', data)
+    cookie.set('account', dataForm.value.account)
     router.replace({name: 'home'})
   }).catch(() => {
     isSubmit = false

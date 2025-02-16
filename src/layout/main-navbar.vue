@@ -24,7 +24,7 @@
       <!--右侧-->
       <div class="site-navbar-content">
         <div class="navbar-content-left">
-          <svg-icon
+          <el-text
             class="left-item"
             icon-class="icon-zhedie"
           />

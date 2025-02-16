@@ -95,16 +95,15 @@ router.beforeEach((to, from, next) => {
     commonStore.updateSelectMenu(navTitles)
     next()
   } else {
-    http({
-      url: http.adornUrl('/sys/menu/nav'),
+    http({ // 请求菜单列表和权限
+      url: http.adornUrl('/Pub/fronts/nav'),
       method: 'get',
       params: http.adornParams()
     }).then(({data}) => {
-      sessionStorage.setItem('Authorities', JSON.stringify(data.authorities || '[]'))
-      fnAddDynamicMenuRoutes(data.menuList)
+      fnAddDynamicMenuRoutes(data.data)
       router.options.isAddDynamicMenuRoutes = true
       const rList = []
-      data.menuList.forEach(item => {
+      data.data.forEach(item => {
         item.isLeftMenu = item.parentId === 0
         rList.push({
           menuId: item.menuId,
@@ -135,8 +134,8 @@ router.beforeEach((to, from, next) => {
           })
         }
       })
-      fnAddDynamicMenuRoutes(data.menuList)
-      sessionStorage.setItem('menuList', JSON.stringify(data.menuList || '[]'))
+      fnAddDynamicMenuRoutes(data.data)
+      sessionStorage.setItem('menuList', JSON.stringify(data.data || '[]'))
       commonStore.updateRouteList(rList)
       commonStore.updateMenuIds(rList)
       next({

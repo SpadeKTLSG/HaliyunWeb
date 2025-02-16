@@ -52,15 +52,14 @@ const loading = ref(true)
  */
 const getUserInfo = () => {
   http({
-    url: http.adornUrl('/sys/user/info'),
-    method: 'get',
+    url: http.adornUrl('/Guest/users/user_tl'),
+    method: 'post',
     params: http.adornParams()
   }).then(({data}) => {
     loading.value = false
     userStore.userId = data.userId
     userStore.name = data.username
     userStore.mobile = data.mobile
-    userStore.shopId = data.shopId
     userStore.userId = data.userId
   }).catch(() => {
   })

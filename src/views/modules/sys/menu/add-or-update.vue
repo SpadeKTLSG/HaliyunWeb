@@ -106,11 +106,7 @@
                 :class="{ 'is-active': item === dataForm.icon }"
                 style="padding: 8px; margin: 8px 0 0 8px"
                 @click="iconActiveHandle(item)"
-              >
-                <svg-icon
-                  :icon-class="`${item}`"
-                />
-              </el-button>
+              />
             </el-popover>
           </el-col>
           <el-col
