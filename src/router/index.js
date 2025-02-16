@@ -136,6 +136,7 @@ router.beforeEach((to, from, next) => {
       })
       fnAddDynamicMenuRoutes(data.data)
       sessionStorage.setItem('menuList', JSON.stringify(data.data || '[]'))
+      console.log(`%c${JSON.stringify(rList)} 请求菜单列表和权限成功，跳转至...`, 'color:blue')
       commonStore.updateRouteList(rList)
       commonStore.updateMenuIds(rList)
       next({
