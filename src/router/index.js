@@ -95,7 +95,7 @@ router.beforeEach((to, from, next) => {
     commonStore.updateSelectMenu(navTitles)
     next()
   } else {
-    http({ // 请求菜单列表和权限
+    http({ // 请求菜单列表
       url: http.adornUrl('/Pub/fronts/nav'),
       method: 'get',
       params: http.adornParams()
