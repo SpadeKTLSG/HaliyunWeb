@@ -4,8 +4,9 @@ import {clearLoginInfo} from '@/layout/index.js'
 import Layout from '@/layout/main.vue'
 import Login from '@/views/common/login/index.vue'
 import {useCommonStore} from "@/layout/common.js";
+import http from '@/utils/webUtil/http.js'
 
-// 全局路由(无需嵌套上左右整体布局)
+// 全局路由 (无需嵌套上左右整体布局)
 const globalRoutes = [
   {
     path: '/404',
@@ -58,10 +59,13 @@ const router = createRouter({
 // eslint-disable-next-line no-unused-vars
 router.beforeEach((to, from, next) => {
   const commonStore = useCommonStore()
+  const routerType = import.meta.env.VITE_APP_ROUTER_TYPE
+
+
   // 添加动态(菜单)路由
-  // 1. 已经添加 or 全局路由, 直接访问
+  // 1. 已经添加 or 全局路由, 直接访问, 如果开启了伪静态路由, 则全部按照静态路由逻辑来
   // 2. 获取菜单列表, 添加并保存本地存储
-  if (router.options.isAddDynamicMenuRoutes || fnCurrentRouteType(to, globalRoutes) === 'global') {
+  if (router.options.isAddDynamicMenuRoutes || fnCurrentRouteType(to, globalRoutes) === 'global' || routerType === 'static') {
     const routeList = commonStore.routeList
     let navTitles = []
     let leftMenuId = ''
@@ -144,8 +148,9 @@ router.beforeEach((to, from, next) => {
         replace: true
       })
     }).catch(e => {
-      console.log(`%c${e} 请求菜单列表和权限失败，跳转至登录页...`, 'color:blue')
-      router.push({name: 'login'})
+      console.log(`%c${e} 请求菜单列表和权限失败`, 'color:blue')
+      // router.push({name: 'login'})
+      router.push({name: 'home'})
     })
   }
 })
