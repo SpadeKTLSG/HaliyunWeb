@@ -42,7 +42,7 @@
 
 <script setup>
 import {ElMessage} from 'element-plus'
-import {Debounce} from '@/utils/debounce'
+import {Debounce} from '@/utils/webUtil/http.js'
 
 const emit = defineEmits(['refreshDataList'])
 

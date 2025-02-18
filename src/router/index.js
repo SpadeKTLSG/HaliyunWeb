@@ -1,10 +1,14 @@
 import {createRouter, createWebHistory} from 'vue-router'
 import cookie from 'vue-cookies'
 import {clearLoginInfo} from '@/layout/index.js'
-import Layout from '@/layout/main.vue'
-import Login from '@/views/common/login/index.vue'
 import {useCommonStore} from "@/layout/common.js";
+import Layout from '@/layout/main.vue'
 import http from '@/utils/webUtil/http.js'
+
+
+// 导入页面组件
+import Login from '@/views/common/login/index.vue'
+
 
 // 全局路由 (无需嵌套上左右整体布局)
 const globalRoutes = [
