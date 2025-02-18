@@ -159,8 +159,11 @@ function fnCurrentRouteType(route, globalRoutes = []) {
  * @param {*} routes 递归创建的动态(菜单)路由
  */
 function fnAddDynamicMenuRoutes(menuList = [], routes = []) {
+  console.log(`%c${JSON.stringify(menuList)} 添加动态(菜单)路由...`, 'color : red')
   let temp = []
-  const modules = import.meta.glob('../views/modules/**/index.vue')
+  const modules = import.meta.globEager('../views/modules/**/index.vue')
+  console.log(`%c${JSON.stringify(modules)} 模块对象`, 'color : red')
+  // todo 这里 modules 是空啊!!!!
   for (let i = 0; i < menuList.length; i++) {
     if (menuList[i].list && menuList[i].list.length >= 1) {
       temp = temp.concat(menuList[i].list)
@@ -178,6 +181,7 @@ function fnAddDynamicMenuRoutes(menuList = [], routes = []) {
       try {
         // 会把传递的后端URL数据转换为前端模块的文件路径进行绑定
         route.component = modules[`../views/modules/${menuList[i].url}/index.vue`] || null
+        console.log(`%c${JSON.stringify(route.component)} 对象为`, 'color : blue')
       } catch (e) {
       }
 
