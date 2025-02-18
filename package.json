@@ -1,5 +1,6 @@
 {
   "name": "haliyun",
+  "private": true,
   "version": "3.0.0",
   "type": "module",
   "description": "HaliyunNetdisk 蛤蜊云网盘",
@@ -7,6 +8,10 @@
     "dev": "vite --open",
     "build": "vite build",
     "serve": "vite preview"
+  },
+  "engines": {
+    "node": ">=16",
+    "pnpm": ">=6"
   },
   "dependencies": {
     "@element-plus/icons-vue": "2.1.0",
@@ -50,14 +55,6 @@
       "eslint --fix"
     ]
   },
-  "browserslist": [
-    "defaults",
-    "not ie <= 11",
-    "chrome >= 49",
-    "firefox >= 51",
-    "edge > 1",
-    "android > 1"
-  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/SpadeKTLSG/HaliyunWeb.git"

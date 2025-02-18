@@ -12,20 +12,11 @@ import User from '@/views/modules/user/user/index.vue'
 
 
 // 全局路由 (无需嵌套上左右整体布局)
-const globalRoutes = [
-  {
-    path: '/404',
-    component: () => import('@/views/common/error-page/404.vue'),
-    name: '404',
-    meta: {title: '404未找到'}
-  },
-  {
-    path: '/login',
-    component: Login,
-    name: 'login',
-    meta: {title: '登录'}
-  }
-]
+const globalRoutes = [{
+  path: '/404', component: () => import('@/views/common/error-page/404.vue'), name: '404', meta: {title: '404未找到'}
+}, {
+  path: '/login', component: Login, name: 'login', meta: {title: '登录'}
+}]
 
 /**
  * 主路由
@@ -36,20 +27,11 @@ export const mainRoutes = {
   component: Layout,
   name: 'home',
   redirect: '/home',
-  children: [
-    {
-      path: 'home',
-      name: 'home',
-      component: () => import('@/views/common/home/index.vue')
-    },
-    {
-      path: '/user/user',
-      component: User,
-      name: 'user-management',
-      meta: {title: '用户管理'}
-    }
-  ],
-  // eslint-disable-next-line no-unused-vars
+  children: [{
+    path: 'home', name: 'home', component: () => import('@/views/common/home/index.vue')
+  }, {
+    path: '/user/user', component: User, name: 'user-management', meta: {title: '用户管理'}
+  }], // eslint-disable-next-line no-unused-vars
   beforeEnter(to, from, next) {
     const authorization = cookie.get('Authorization')
     if (!authorization || !/\S/.test(authorization)) {
@@ -74,7 +56,7 @@ router.beforeEach((to, from, next) => {
 
 
   // 添加动态(菜单)路由
-  // 1. 已经添加 or 全局路由, 直接访问, 如果开启了伪静态路由, 则全部按照静态路由逻辑来
+  // 1. 已经添加 or 全局路由, 直接访问, 如果开启了伪静态路由, 则全部按照静态路由逻辑来 (没测过, 别开! )
   // 2. 获取菜单列表, 添加并保存本地存储
   if (router.options.isAddDynamicMenuRoutes || fnCurrentRouteType(to, globalRoutes) === 'global' || routerType === 'static') {
     const routeList = commonStore.routeList
@@ -111,9 +93,7 @@ router.beforeEach((to, from, next) => {
     next()
   } else {
     http({ // 请求菜单列表
-      url: http.adornUrl('/Pub/fronts/nav'),
-      method: 'get',
-      params: http.adornParams()
+      url: http.adornUrl('/Pub/fronts/nav'), method: 'get', params: http.adornParams()
     }).then(({data}) => {
 
       fnAddDynamicMenuRoutes(data)
@@ -122,28 +102,19 @@ router.beforeEach((to, from, next) => {
       data.forEach(item => {
         item.isLeftMenu = item.parentId === 0
         rList.push({
-          menuId: item.menuId,
-          name: item.name,
-          parentId: item.parentId,
-          url: item.url
+          menuId: item.menuId, name: item.name, parentId: item.parentId, url: item.url
         })
         if (item.list) {
           item.list.forEach(item1 => {
             item1.isLeftMenu = item1.parentId === 0
             rList.push({
-              menuId: item1.menuId,
-              name: item1.name,
-              parentId: item1.parentId,
-              url: item1.url
+              menuId: item1.menuId, name: item1.name, parentId: item1.parentId, url: item1.url
             })
             if (item1.list) {
               item1.list.forEach(item2 => {
                 item2.isLeftMenu = item2.parentId === 0
                 rList.push({
-                  menuId: item2.menuId,
-                  name: item2.name,
-                  parentId: item2.parentId,
-                  url: item2.url
+                  menuId: item2.menuId, name: item2.name, parentId: item2.parentId, url: item2.url
                 })
               })
             }
@@ -156,8 +127,7 @@ router.beforeEach((to, from, next) => {
       commonStore.updateRouteList(rList)
       commonStore.updateMenuIds(rList)
       next({
-        ...to,
-        replace: true
+        ...to, replace: true
       })
     }).catch(e => {
       console.log(`%c${e} 请求菜单列表和权限失败`, 'color:blue')
@@ -201,11 +171,7 @@ function fnAddDynamicMenuRoutes(menuList = [], routes = []) {
         component: null,
         name: menuList[i].url,
         meta: {
-          menuId: menuList[i].menuId,
-          title: menuList[i].name,
-          isDynamic: true,
-          isTab: true,
-          iframeUrl: ''
+          menuId: menuList[i].menuId, title: menuList[i].name, isDynamic: true, isTab: true, iframeUrl: ''
         }
       }
 
@@ -226,8 +192,7 @@ function fnAddDynamicMenuRoutes(menuList = [], routes = []) {
     router.addRoute(mainRoutes)
   }
   router.addRoute({
-    path: '/:pathMatch(.*)*',
-    redirect: {name: '404'}
+    path: '/:pathMatch(.*)*', redirect: {name: '404'}
   })
 }
 

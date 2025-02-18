@@ -24,7 +24,7 @@ export default defineConfig(() => {
       }),
       // 自动引入组件
       Components({
-        dirs: ['src/compo/**'],
+        dirs: ['src/compo'],
         resolvers: [ElementPlusResolver()],
         dts: 'compo.d.ts'
       }),
