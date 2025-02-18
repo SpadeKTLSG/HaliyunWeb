@@ -8,6 +8,7 @@ import http from '@/utils/webUtil/http.js'
 
 // 导入页面组件
 import Login from '@/views/common/login/index.vue'
+import User from '@/views/modules/user/user/index.vue'
 
 
 // 全局路由 (无需嵌套上左右整体布局)
@@ -40,6 +41,12 @@ export const mainRoutes = {
       path: 'home',
       name: 'home',
       component: () => import('@/views/common/home/index.vue')
+    },
+    {
+      path: '/user/user',
+      component: User,
+      name: 'user-management',
+      meta: {title: '用户管理'}
     }
   ],
   // eslint-disable-next-line no-unused-vars
@@ -108,10 +115,11 @@ router.beforeEach((to, from, next) => {
       method: 'get',
       params: http.adornParams()
     }).then(({data}) => {
-      fnAddDynamicMenuRoutes(data.data)
+
+      fnAddDynamicMenuRoutes(data)
       router.options.isAddDynamicMenuRoutes = true
       const rList = []
-      data.data.forEach(item => {
+      data.forEach(item => {
         item.isLeftMenu = item.parentId === 0
         rList.push({
           menuId: item.menuId,
@@ -142,8 +150,8 @@ router.beforeEach((to, from, next) => {
           })
         }
       })
-      fnAddDynamicMenuRoutes(data.data)
-      sessionStorage.setItem('menuList', JSON.stringify(data.data || '[]'))
+      fnAddDynamicMenuRoutes(data)
+      sessionStorage.setItem('menuList', JSON.stringify(data || '[]'))
       console.log(`%c${JSON.stringify(rList)} 请求菜单列表和权限成功，跳转至...`, 'color:blue')
       commonStore.updateRouteList(rList)
       commonStore.updateMenuIds(rList)
@@ -153,8 +161,7 @@ router.beforeEach((to, from, next) => {
       })
     }).catch(e => {
       console.log(`%c${e} 请求菜单列表和权限失败`, 'color:blue')
-      // router.push({name: 'login'})
-      router.push({name: 'home'})
+      router.push({name: 'login'})
     })
   }
 })

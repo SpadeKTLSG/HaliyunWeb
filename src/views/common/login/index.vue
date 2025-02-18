@@ -55,7 +55,6 @@ import cookie from 'vue-cookies'
 import {ElMessage} from "element-plus";
 
 const router = useRouter()
-let isSubmit = false
 
 /**
  * 表单引用
@@ -104,10 +103,6 @@ onMounted(() => {
 
 
 const login = () => {
-  if (isSubmit) {
-    return
-  }
-  isSubmit = true
   http({
     url: http.adornUrl('/Guest/users/login'),
     method: 'post',
@@ -131,7 +126,6 @@ const login = () => {
     cookie.set('account', dataForm.value.account)
     router.replace({name: 'home'})
   }).catch(() => {
-    isSubmit = false
     ElMessage({
       message: "登录失败",
       type: 'error',
