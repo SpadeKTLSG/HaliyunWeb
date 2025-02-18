@@ -26,7 +26,7 @@ export default defineConfig(() => {
       Components({
         dirs: ['src/compo'],
         resolvers: [ElementPlusResolver()],
-        dts: 'compo.d.ts'
+        dts: 'components.d.ts'
       }),
       // eslint
       eslintPlugin({
