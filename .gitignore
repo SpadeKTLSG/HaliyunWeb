@@ -23,9 +23,4 @@ dist-ssr
 *.sln
 *.sw?
 
-# 自动引入
-src/auto-import
-compo.d.ts
-.eslintrc-auto-import.json
-/imports.d.ts
-!/components.d.ts
+
