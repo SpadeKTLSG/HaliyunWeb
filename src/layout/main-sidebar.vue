@@ -77,9 +77,10 @@
 <script setup>
 import SubMenu from './main-sidebar-sub-menu.vue'
 import {useCommonStore} from "@/layout/common.js";
+import router from "@/router/index.js";
 
 const route = useRoute()
-const router = useRouter()
+
 const commonStore = useCommonStore()
 const dynamicMenuRoutes = ref([])
 const expandMenuList = ref([])
@@ -138,8 +139,7 @@ const routeHandle = route => {
 
 const gotoRouteHandle = menu => {
   console.info('menu', menu)
-  console.info('router.history', router.history)
-  if (router.currentRoute.value.name === menu.url) {
+  if (router.history.value.name === menu.url) {
     expandMenuList.value = []
     commonStore.updateSidebarFold(true)
     sessionStorage.setItem('isExpand', '0')
