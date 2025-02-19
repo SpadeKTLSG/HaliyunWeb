@@ -37,6 +37,7 @@
 <script setup>
 import {ArrowRight} from '@element-plus/icons-vue'
 import {useCommonStore} from "@/layout/common.js";
+import {isURL} from "@/utils/webUtil/http.js";
 
 const route = useRoute()
 const documentClientHeight = ref(document.documentElement.clientHeight)

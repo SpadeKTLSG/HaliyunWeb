@@ -15,7 +15,7 @@
               <el-text
                 style="font-size: 16px; margin-right: 3px !important"
               />
-              <span style="font-size: 14px">仪表盘</span>
+              <span style="font-size: 14px">首页</span>
             </div>
           </li>
         </ul>
@@ -137,7 +137,9 @@ const routeHandle = route => {
 }
 
 const gotoRouteHandle = menu => {
-  if (router.history.current.name === menu.url) {
+  console.info('menu', menu)
+  console.info('router.history', router.history)
+  if (router.currentRoute.value.name === menu.url) {
     expandMenuList.value = []
     commonStore.updateSidebarFold(true)
     sessionStorage.setItem('isExpand', '0')

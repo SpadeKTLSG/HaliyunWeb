@@ -197,5 +197,11 @@ export const uploadFile = function (url, file) {
   return axios.post(url, param, config)
 }
 
+/**
+ * 校验是否URL地址
+ */
+export function isURL(s) {
+  return /^https?:\/\/.*/.test(s)
+}
 
 export default http

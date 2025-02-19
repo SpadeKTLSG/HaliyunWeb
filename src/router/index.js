@@ -161,9 +161,8 @@ function fnCurrentRouteType(route, globalRoutes = []) {
 function fnAddDynamicMenuRoutes(menuList = [], routes = []) {
   console.log(`%c${JSON.stringify(menuList)} 添加动态(菜单)路由...`, 'color : red')
   let temp = []
-  const modules = import.meta.globEager('../views/modules/**/index.vue')
+  const modules = import.meta.glob('../views/modules/**/index.vue', {eager: true})
   console.log(`%c${JSON.stringify(modules)} 模块对象`, 'color : red')
-  // todo 这里 modules 是空啊!!!!
   for (let i = 0; i < menuList.length; i++) {
     if (menuList[i].list && menuList[i].list.length >= 1) {
       temp = temp.concat(menuList[i].list)
